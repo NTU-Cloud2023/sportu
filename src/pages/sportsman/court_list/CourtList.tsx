@@ -26,7 +26,7 @@ const CourtList = () => {
     const fetchCourtsAndUpdateDivs = (position: GeolocationPosition | null) => {
         axios.get(`${BACK_END}/${VERSION}/spaces`)
             .then(async (res) => {
-                const newCourtCards = [];
+                const courtCards = [];
                 const courts = res.data;
                 const n = courts.length;
                 for (let i = 0; i < n; i++) {
@@ -37,7 +37,7 @@ const CourtList = () => {
                         position.coords.longitude
                     );
 
-                    newCourtCards.push(
+                    courtCards.push(
                         <CourtCard
                             key={i}
                             numUsers={court.headcount}
@@ -49,7 +49,7 @@ const CourtList = () => {
                     );
                 }
 
-                setCourtCards(newCourtCards);
+                setCourtCards(courtCards);
             }).catch((err) => {
                 console.log("fetchCourtsAndUpdateDivs", err);
             });

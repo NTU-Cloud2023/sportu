@@ -21,12 +21,12 @@ const NearbyCourts = () => {
 
         axios.get(uri)
             .then((res) => {
-                const newCourtCards = [];
+                const courtCards = [];
                 const courts = res.data;
                 const n = courts.length;
                 for (let i = 0; i < n; i++) {
                     const court = courts[i];
-                    newCourtCards.push(
+                    courtCards.push(
                         <CourtCard
                             key={i}
                             numUsers={court.headcount}
@@ -38,7 +38,7 @@ const NearbyCourts = () => {
                     );
                 }
 
-                setCourtCards(newCourtCards);
+                setCourtCards(courtCards);
             }).catch((err) => {
                 console.log("fetchCourtsAndUpdateDivs", err);
             });
