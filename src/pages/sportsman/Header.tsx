@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as MenuBar } from "../../assets/images/icon/menu-bar.svg";
 import { ReactComponent as Bell } from "../../assets/images/icon/bell.svg";
 import "./header.scss";
@@ -8,8 +9,9 @@ type HeaderProps = {
 };
 
 const Header = (props: HeaderProps) => {
+    const navigate = useNavigate();
     const handleShowMap = () => {
-        window.location.href = "http://localhost:3000/map";
+        navigate("/map");
     };
 
     return (

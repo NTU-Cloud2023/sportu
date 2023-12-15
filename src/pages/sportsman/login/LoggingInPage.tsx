@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Pager1 from "./Pager1";
 import { BACK_END, VERSION } from "../../../config";
@@ -7,6 +7,7 @@ import { setSportId, setSportName } from "../../../utils/local_storage/localStor
 
 const LoggingInPage = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const fetchSportTypesAndWriteToLocalStorage = async () => {
         try {
             const response = await axios.get(`${BACK_END}/${VERSION}/spaces/sports`);
@@ -32,7 +33,7 @@ const LoggingInPage = () => {
                     const userId = data.userInfo.id;
                     window.localStorage.setItem("email", email);
                     window.localStorage.setItem(email, userId);
-                    window.location.href = "http://localhost:3000/home";
+                    navigate("/home");
                 }).catch((err) => {
                     console.log(err);
                 });

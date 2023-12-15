@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { FRONT_END } from "../../../config";
 import "./pager1.scss";
 
 type Pager1Props = {
@@ -5,14 +7,15 @@ type Pager1Props = {
 };
 
 const Pager1 = (props: Pager1Props) => {
+    const navigate = useNavigate();
     const clientId = "7dv888dumqvn3o45ri1l5g8osn";
-    const redirectUri = "http://localhost:3000/callback";
+    const redirectUri = FRONT_END + "/callback";
     const handleLogin = () => {
         window.location.href = `https://sportu.auth.ap-northeast-1.amazoncognito.com/login?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}`;
     };
 
     const handleProviderLogin = () => {
-        window.location.href = "http://localhost:3000/provider-login";
+        navigate("/provider-login");
     };
 
     return (

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Cancel } from "../../assets/images/icon/cancel.svg";
 import "./menu.scss";
 
@@ -6,28 +7,29 @@ type MenuProps = {
 };
 
 const Menu = (props: MenuProps) => {
+    const navigate = useNavigate();
     const handleShowHomePage = () => {
-        window.location.href = "http://localhost:3000/home";
+        navigate("/home");
     };
 
     const handleReserveNow = () => {
-        window.location.href = "http://localhost:3000/reservation";
+        navigate("/reservation");
     };
 
     const handleShowMatchingStatus = () => {
-        window.location.href = "http://localhost:3000/matching-status";
+        navigate("/matching-status");
     };
 
     const handleShowCourtList = () => {
-        window.location.href = "http://localhost:3000/court-list";
+        navigate("/court-list");
     };
 
     const handleSignIn = () => {
-        window.location.href = "http://localhost:3000/sign-in";
+        navigate("/sign-in");
     };
 
     const handleLogout = () => {
-        window.location.href = "http://localhost:3000/login";
+        navigate("/login");
     };
 
     return (
